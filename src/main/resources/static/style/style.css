@@ -1,0 +1,22 @@
+.eventDetail {
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin-bottom: 60px;
+}
+
+.guestForm {
+	padding-bottom: 10px;
+}
+
+.guestTable {
+	width: 50%;
+}
+
+.eventForm {
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin-bottom: 60px;
+	padding-bottom: 10px;'
+}

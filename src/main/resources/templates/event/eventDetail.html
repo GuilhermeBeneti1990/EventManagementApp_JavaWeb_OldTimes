@@ -1,0 +1,77 @@
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	  
+	 <head>
+		  <!--Import Google Icon Font-->
+	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	      <!--Import materialize.css-->
+	      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+	
+	      <!--Let browser know website is optimized for mobile-->
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	      
+	      <link rel="stylesheet" href="style/style.css" />
+		  
+		  <title>EventApp</title>
+	 </head>
+	  
+	<body>
+	
+		<header>
+			<nav>
+			    <div class="nav-wrapper">
+			      <a href="#" class="brand-logo">Event Detail</a>
+			      <ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li>
+			        	<a class="waves-effect waves-light btn" href="/event">
+							<i class="material-icons left">add_circle_outline</i>>Event List
+						</a>
+					</li>
+			      </ul>
+			    </div>
+			  </nav>
+		</header>
+		
+		<div th:each="event : ${event}" class="container eventDetail">
+			<h5>Event Detail</h5>
+			<div class="row">
+				<p>Name: <span th:text="${event.name}"></span></p>
+				<p>Local: <span th:text="${event.local}"></span></p>
+				<p>Date: <span th:text="${event.date}"></span></p>
+				<p>Time: <span th:text="${event.time}"></span></p>
+			</div>
+		</div>
+			
+			<th:block th:include="messageValidation"></th:block>
+		
+		<div class="container eventDetail guestForm">
+			<form method="post">
+				Name: <input type="text" value="" name="name" />
+				Document Number: <input type="text" value="" name="documentNumber" />
+				<button class="waves-effect waves-light btn" type="submit">Add</button>
+			</form>
+		</div>
+
+		<table class="container guestTable">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Document Number</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="guest : ${guests}">
+					<td><span th:text="${guest.guestName}"></span></td>
+					<td><span th:text="${guest.documentNumber}"></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#guestDelete').arg(0, guest.documentNumber)).build()}"></a><i class="material-icons left">delete</i></td>
+				</tr>
+			</tbody>
+		</table>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	</body>
+
+</html>
